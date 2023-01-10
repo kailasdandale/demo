@@ -1,0 +1,40 @@
+server:
+  port: 8999
+  
+#eureka:
+#  instance:
+#    hostname: localhost
+    
+spring:
+  application:
+    name: api-gateway 
+  cloud:
+    gateway:
+      routes:
+      - id: user
+        uri: lb://user
+        predicates:
+        - Path=/user/**
+      #  filters:
+     #     -name: CircuitBreaker
+      #    args:
+       #   name: user
+        #  faulbackurl:  fordward:/addressservicefail
+      - id: address
+        uri: lb://address
+        predicates:
+         - Path=/user/**
+      #  filters:
+        #  -name: CircuitBreaker
+        #    args:
+       #       name: address
+         #        faulbackurl: fordward:/addressservicefallback
+ 
+      
+          
+             
+                
+                  
+            
+              
+         
