@@ -21,7 +21,7 @@ public class User1Service {
 	public User1 createUser1(User1 user1) {
 		if (repo.findByEmail(user1.getEmail()).isPresent())
 			throw new UserNotFoundExc("Email is already exists " 
-		                              + " Please enter another EmailId");
+		                  + " Please enter another EmailId");
 		else
 			return repo.save(user1);
 	}
@@ -84,6 +84,11 @@ public class User1Service {
 		
 		throw new UserNotFoundExc("OOps!! Not found !!! "+email+ 
 				" Please Enter valid Email !!");
+	}
+
+	public List<User1> getUserByNameOrEmail(String query) {
+		
+		return repo.findByNameOrEmail(query,query);
 	}
 
 }

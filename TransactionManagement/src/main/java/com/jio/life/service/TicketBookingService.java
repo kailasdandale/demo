@@ -29,7 +29,7 @@ public class TicketBookingService {
 	public Responce bookTicket(@RequestBody TicketBookinRequest request) {
 
 		PassengerInfo passengerInfo = request.getPassengerInfo();
-
+		//save passenger data//
 		passengerInfo = passengerInfoRepo.save(passengerInfo);
 
 		PaymentInfo paymentInfo = request.getPaymentInfo();
@@ -49,6 +49,7 @@ public class TicketBookingService {
 		if (passengerInfoRepo.findByName(name).isEmpty()) {
 
 			throw new InsufficientAmountException("Please enter valid Name");
+		
 		}
 		return passengerInfoRepo.findByName(name);
 		

@@ -10,7 +10,8 @@ public class Arr {
 	        int[] arr = a.stream()
 	                              .mapToInt(Integer::intValue)
 	                              .toArray();
-	         int[] arr2 = b.stream()
+	       
+	        int[] arr2 = b.stream()
 	                              .mapToInt(Integer::intValue)
 	                              .toArray();                     
 	 
