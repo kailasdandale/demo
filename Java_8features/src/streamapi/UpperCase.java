@@ -12,6 +12,7 @@ public class UpperCase {
 
 		String string =
 				l.stream().map(x -> x.toUpperCase())
+				
 				.collect(Collectors.joining(","));
 		System.out.println(string);
 		

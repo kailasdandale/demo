@@ -15,10 +15,16 @@ public class ConvertArrayIntoList {
 
 		int[] arr = { 12, 34, 55, 66 };
 
+		List<Integer> lists = Arrays.stream(arr)
+				.boxed()
+				.collect(Collectors.toList());
+		
 		String[] str = { "kailas", "praKash", "dipak", "ravi" };
 
 		Stream<String> stream2 = Arrays.stream(str);
 		List<String> collect = stream2.filter(e -> e.contains("K")).collect(Collectors.toList());
+		
+		
 		System.out.println(collect);
 
 		IntStream stream = Arrays.stream(arr);

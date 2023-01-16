@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.neo.model.User1;
@@ -26,45 +27,52 @@ public class AppController {
 	public String greeting() {
 		return "hello";
 	}
+
 	@PostMapping("/create")
-	public ResponseEntity<User1>createUser(@Valid @RequestBody User1 user1){
-		
+	public ResponseEntity<User1> createUser(@Valid @RequestBody User1 user1) {
+
 		return new ResponseEntity<User1>
-		
-		(service.createUser1(user1),HttpStatus.ACCEPTED);
+
+		(service.createUser1(user1), HttpStatus.ACCEPTED);
 	}
-	
+
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User1>getUser(@PathVariable("id")int id){
-		
-		return new ResponseEntity<User1>(service.getUser(id),HttpStatus.OK);
+	public ResponseEntity<User1> getUser(@PathVariable("id") int id) {
+
+		return new ResponseEntity<User1>(service.getUser(id), HttpStatus.OK);
 	}
-	
+
 	@PutMapping(value = "/update/{id}")
-	public ResponseEntity<User1>updateUserDeatils(@RequestBody User1 user1,
-			@PathVariable int id){
-		return new ResponseEntity<User1>
-		       (service.updateUserDetails(user1,id),HttpStatus.ACCEPTED);
+	public ResponseEntity<User1> updateUserDeatils(@RequestBody User1 user1, @PathVariable int id) {
+		return new ResponseEntity<User1>(service.updateUserDetails(user1, id), HttpStatus.ACCEPTED);
 	}
-	
+
 	@GetMapping(value = "/allusers")
-	public ResponseEntity<List<User1>>getAllUsers(){
-		
-		return new ResponseEntity<List<User1>>
-		(service.getAllUser(),HttpStatus.OK);
+	public ResponseEntity<List<User1>> getAllUsers() {
+
+		return new ResponseEntity<List<User1>>(service.getAllUser(), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<?>deleteUser(@PathVariable int id){
-		
-		return new ResponseEntity<String>(service.deleteUser(id),HttpStatus.OK);
-				
+	public ResponseEntity<?> deleteUser(@PathVariable int id) {
+
+		return new ResponseEntity<String>(service.deleteUser(id), HttpStatus.OK);
+
 	}
-	
+
 	@GetMapping(value = "/email/{email}")
-	public ResponseEntity<?>getUserByEmail(@PathVariable String email){
-		
-		return new 
-				ResponseEntity<User1>(service.getUserByEmail(email),HttpStatus.OK);
+	public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
+
+		return new ResponseEntity<User1>(service.getUserByEmail(email), HttpStatus.OK);
 	}
+
+	//not complete..
+	
+	@GetMapping(value = "/{query}")
+	public ResponseEntity<List<User1>> getUserByNameOrEmail(@RequestParam String query) {
+
+		return new ResponseEntity<List<User1>>
+		(service.getUserByNameOrEmail(query), HttpStatus.OK);
+	}
+
 }

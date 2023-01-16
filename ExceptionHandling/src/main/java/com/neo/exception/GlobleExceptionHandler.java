@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -36,6 +37,17 @@ public class GlobleExceptionHandler extends ResponseEntityExceptionHandler {
 		map.put("Errors", error);
 
 		return new ResponseEntity<Object>(map, headers, status);
-
 	}
+	
+	@Override
+	protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex,
+			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+		// TODO Auto-generated method stub
+		
+		return new 
+				ResponseEntity<Object>("Please change HTTP Method Type",status);
+		    
+	}
+	
+	
 }
