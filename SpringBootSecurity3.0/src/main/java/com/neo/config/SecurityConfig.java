@@ -17,9 +17,8 @@ import com.neo.service.UserInfoDetailsService;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-public class Config {
+public class SecurityConfig {
 
-	
 	@Bean
 	public UserDetailsService userDetailsService() {
 
@@ -30,7 +29,7 @@ public class Config {
 		 * UserDetails user = User.withUsername("vishal")
 		 * .password(encoder.encode("vishal123")).roles("USER") .build();
 		 */
-		
+
 		return new UserInfoDetailsService();
 
 	}
@@ -40,23 +39,24 @@ public class Config {
 		return new BCryptPasswordEncoder();
 	}
 
-	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-	return	http.csrf().disable()
-		.authorizeHttpRequests()
-		.requestMatchers("/api/all","/api/create").permitAll()
-		.and()
-		.authorizeHttpRequests()
-		.requestMatchers("/api/**").authenticated()
-		.and()
-		.formLogin()
-		.and()
-		.build();
-		
+		return 
+				http.csrf()
+				.disable()
+				.authorizeHttpRequests().requestMatchers("/api/all", "/api/create").permitAll()
+				.and()
+				.authorizeHttpRequests().requestMatchers("/api/**").authenticated()
+				.and()
+			//	.authorizeHttpRequests().requestMatchers("/api/product").hasAuthority("hasRole('ROLE_ADMIN')")
+			//	.and()
+				.httpBasic()
+			//  .formLogin()
+				.and()
+				.build();
+
 	}
-	
-	
+
 	@Bean
 	public AuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
