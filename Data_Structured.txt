@@ -1,0 +1,18 @@
+ Data Structure
+
+1. Leaner
+2.Non-linear data.
+
+1).Leaner DS :-
+		every items realeted to its previous and next.
+	data is arranged in liner sequense.
+	data items can be travsed in single run.
+	implementation is easy.
+
+2) Non-linear DS :-
+		every items is attached with many other items.
+	data is not arranged in sequence.
+	data can not be travsed in single run.
+	implementation is defficult. 
+
+

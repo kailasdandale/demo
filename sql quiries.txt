@@ -1,0 +1,36 @@
+//Second largest salary?
+
+select *from employee 
+order by  salary desc limit 1,1;
+
+//first 10 record in table;
+
+SELECT *FROM Employee ORDER BY empId LIMIT 10;
+
+//inner join
+
+SELECT ID FROM Customers INNER
+JOIN Orders ON Customers.ID = Orders.ID;
+
+2)
+select e.empName,d.deptName
+from employee e inner join department d
+on e.deptId=d.deptId;
+
+//left join
+select e.empName,d.deptName
+from employee e left join department d
+on e.deptId=d.deptId;
+            
+//right join
+
+select e.empName,d.deptName
+from employee e right join department d
+on e.deptId=d.deptId;
+
+//cross join
+in cross join there is not required relation between two table.
+
+select e.empName,d.deptName
+from employee e
+cross join department d;

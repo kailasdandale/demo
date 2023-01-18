@@ -1,0 +1,37 @@
+Microservice Desine Pattern---
+
+1. Aggregator :-
+		collect related items of data and display them based on DRY Principle.
+
+2.API Gateway :-
+		
+		API Gateway acts an entry point to fordward the client requiest to Approprite 
+		microservices.
+		It can convert the protocal request from one  type to other.
+ 
+3. Chained :-
+		Used synchronous HTTP Request to comunicate one service to another.
+
+4.Asynchronus Massaging :-
+			
+		All the services can comnucate with each other,but they do not have
+		to communicate with each other sequantially.
+
+5. Events Sourcing :-
+			
+		 It is used to create Events regarding the changes in the application state.
+
+6. Branch :-
+
+	
+7. Circuit Breaker :-
+		
+	          It is used to stop the process of requiest and response 
+		 if a service is not working(Down).
+
+8. Decomposition :-
+		
+
+
+
+		

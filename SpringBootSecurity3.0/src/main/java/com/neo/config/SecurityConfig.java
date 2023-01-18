@@ -50,12 +50,13 @@ public class SecurityConfig {
 				.and()
 			//	.authorizeHttpRequests().requestMatchers("/api/product").hasAuthority("hasRole('ROLE_ADMIN')")
 			//	.and()
-				.httpBasic()
-			//  .formLogin()
+			//	.httpBasic()
+			    .formLogin()
 				.and()
 				.build();
 
 	}
+	
 
 	@Bean
 	public AuthenticationProvider authenticationProvider() {

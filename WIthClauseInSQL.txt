@@ -1,0 +1,21 @@
+           ---------With Clause ---
+
+ The WITH clause is used in queries in which a derived table is unsuitable.
+ Therefore, it is considered a neater alternative to temp tables.
+ Put simply, the key advantage of the WITH clause is that it helps
+ organize and simplify long and complex hierarchical queries by 
+  breaking them down into smaller.
+
+
+CTE is a temporary named result set that you can refrence within a
+select,insert,update,delete.
+
+select *  from emp;
+
+with cte1 AS (select ename,sal from emp where dept in(10,20,30))
+select * max(sal)from cte1;
+
+
+
+Update : Basic of OAuth,
+CRUD In RestAPI,Understand Push Notification with Firebase
