@@ -40,7 +40,7 @@ protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotV
 	@ExceptionHandler(UserNotFound.class)
 	public ResponseEntity<?>handleException(UserNotFound e){
 		
-		return new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
+		return new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_FOUND);
 	}
 	
 }

@@ -42,8 +42,10 @@ public class Test {
     //Names of Employee with dipartment.
 	public static void NamesOfEmployeeByEachDipartment() {
 
-       Map<String, List<String>> collect = getAllEmployee().stream()
-				.collect(Collectors
+       Map<String, List<String>> collect = 
+    		   getAllEmployee()
+    		   .stream()
+			   .collect(Collectors
 						.groupingBy(Employee::getDipartment,
 								Collectors.mapping(Employee::getName, 
 										Collectors.toList())));
@@ -113,7 +115,7 @@ public class Test {
 
 	private static void topTwoSalary() {
 		  
-		DoubleSummaryStatistics collect = 
+		DoubleSummaryStatistics maxTwo = 
 		
 		getAllEmployee()
 		.stream()
@@ -124,8 +126,51 @@ public class Test {
 		.reversed())
 		.limit(2)
 		.collect(Collectors.summarizingDouble(Employee::getSalary));
-		 System.out.println(collect.getAverage());
+		
+		System.out.println(maxTwo);
+		System.out.println(maxTwo.getAverage());
 }
+	
+	public static void highSalaryWithDipartmentWiser() {
+
+		Map<String, Optional<Employee>> maxSalaryOfEachDipt =
+				getAllEmployee()
+				.stream()
+				.collect(Collectors.groupingBy(Employee::getDipartment,
+						Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
+								
+	//System.out.println(maxSalaryOfEachDipt);
+	
+		maxSalaryOfEachDipt.forEach((k,v)->{
+			System.out.println(k+":"+v.get());
+		
+		});
+	
+	
+	}
+	
+	
+	
+	public static void maxSalaryOfEachDipt() {
+		
+		Map<String, Optional<Employee>> map =
+				getAllEmployee()
+				.stream().
+		        collect(Collectors.groupingBy(s->s.getDipartment(),
+				Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
+		
+		map.forEach((k,v)->{
+			System.out.println(k+":"+v.get());
+			
+		});
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public static void main(String[] args) {
@@ -152,7 +197,10 @@ public class Test {
 		//groupByNameAndDipartment();
 		 
 		 NamesOfEmployeeByEachDipartment();
-		 
+		
+	//	highSalaryWithDipartmentWiser();
+	
+		maxSalaryOfEachDipt();
 		// avrageSalary();
 		 
 		// maxSalaryOfHrDipartmentEmployee();
