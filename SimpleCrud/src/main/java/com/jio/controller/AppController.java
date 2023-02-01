@@ -12,39 +12,51 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bugsnag.Bugsnag;
+import com.bugsnag.BugsnagAsyncExceptionHandler;
 import com.jio.entity.User;
 import com.jio.service.UserService;
 
 @RestController
 public class AppController {
 
-	
+	@Autowired
+	private Bugsnag bugsnag;
+
 	@GetMapping(value = "/hello")
 	public String greating() {
+		
+		try {
+			System.out.println(10 / 0);
+		} 
+		catch (Exception e) {
+			
+			bugsnag.notify(e);
+		}
 		return "Hello";
 	}
-	
+
 	@Autowired
 	private UserService userservice;
-	
+
 	@PostMapping(value = "/addUser")
-	public ResponseEntity<User>addNewUser(@Valid @RequestBody User user){
-		
+	public ResponseEntity<User> addNewUser(@Valid @RequestBody User user) {
 		System.out.println("aaa");
-	return new ResponseEntity<User>(userservice.addNewUser(user),HttpStatus.CREATED);
+		return new ResponseEntity<User>(userservice.addNewUser(user), HttpStatus.CREATED);
 	}
-	
+
 	@GetMapping(value = "/{email}")
-	public ResponseEntity<User>getUser(@PathVariable("email") String email){
-		
-		return new ResponseEntity<User>(userservice.getUser(email),HttpStatus.OK);
+	public ResponseEntity<User> getUser(@PathVariable("email") String email) {
+
+		return new ResponseEntity<User>(userservice.getUser(email), HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/update/{id}")
-	public ResponseEntity<User>updateUser(@PathVariable int id,
-			@RequestBody User user){
-		
-		return new ResponseEntity<User>(userservice.updateUser(id,user),HttpStatus.ACCEPTED);
-		
+	public ResponseEntity<User> updateUser(@PathVariable int id,
+
+			@RequestBody User user) {
+
+		return new ResponseEntity<User>(userservice.updateUser(id, user), HttpStatus.ACCEPTED);
+
 	}
 }

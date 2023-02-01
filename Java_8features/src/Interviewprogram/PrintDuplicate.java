@@ -12,6 +12,15 @@ public class PrintDuplicate {
 	public static void main(String[] args) {
 		
 		List<Integer> list = Arrays.asList(12,34,56,78,23,23,12,77,78);
+		
+		
+		
+		Set<Integer> ss = list.stream()
+		.filter(e->Collections.frequency(list, e)>1)
+		.collect(Collectors.toSet());
+		
+		System.out.println(ss);
+		System.out.println("*************");
 		Set<Integer>l=new HashSet<>();
 		//print duplicate using to set
 		List<Integer> collect = 

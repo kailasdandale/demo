@@ -19,6 +19,9 @@ public class UserService {
 
 	public User2 createUser(User2 user2) {
 
+		if(repo.findByEmail(user2.getEmail()).isPresent())
+		throw new UserNotFound("User is already exist !!");
+		
 		return repo.save(user2);
 	}
 
@@ -33,8 +36,8 @@ public class UserService {
 
 	public List<User2> getAll() {
 
-		return repo.findAll()
-
+		return 
+			  repo.findAll()
 				.stream()
 				.sorted(Comparator.comparing(User2::getAge))
 				.collect(Collectors.toList());
