@@ -30,12 +30,15 @@ public class GlobleExceptionHandler extends ResponseEntityExceptionHandler {
 		
 		Map<String, Object>map=new HashMap<>();
 		
-		List<String> error = ex.getBindingResult()
-		.getFieldErrors().stream()
-		.map(e->e.getDefaultMessage())
-		.collect(Collectors.toList());
+		List<String> error = 
+				ex.getBindingResult()
+				.getFieldErrors()
+				.stream()
+				.map(e->e.getDefaultMessage())
+				.collect(Collectors.toList());
 		
 		map.put("Errors", error);
+		
 		return new
 				ResponseEntity<Object>(map,status.NOT_FOUND);
 	}
