@@ -1,0 +1,11 @@
+
+Start zookeeper ->
+.\zookeeper-server-start.bat ..\..\config\zookeeper.properties
+
+Start server ->
+
+.\kafka-server-start.bat ..\..\config\server.properties
+
+patition :-
+
+.\kafka-topics.bat --create --zookeeper localhost:9092 --replication-factor 1 --partitions 3 --topic kafkaTopic
