@@ -1,0 +1,129 @@
+git is varsion control tool
+
+
+//connect remote git //
+git remote add origun <https://github.com/kailasdandale007.....>
+git checkout -b <branchname>
+git add .
+git commit -m <commit msg>
+git push --set-upstream origin <Branch name>
+
+
+to set username and email id -
+
+1) git config --global user.name username
+2) git config --global user.email xxx@gmail.com
+
+git stages -
+
+untracked stage ---<add file> ---- stage ---<commit> -- unmodified stage --<edit> modified stage-- stage
+
+two ways to set repo
+using init command or cloning 
+
+3) git init
+
+4) git status
+
+5) git add <file name>
+
+  set upstream
+ git push --set-upstream origin branchName
+
+6) git commit
+ 
+   git commit -m "message" 
+
+7) git touch index.html --- touch is used to create file or any document
+
+8) git add -A  here -A use to add all untracked files
+
+9) git checkout index.html --- if by mistake we changes any file that time we can use thes
+                               command and get previes commit code
+
+10) git checkout -f  -to get perives commited all files
+
+11) git log  -- used to check wt u commited 
+
+12) git rm --cached index.html  --- this will remove file from staging area (commited location)
+					and add into untracked area
+13) git rm index.html  -- this will delete file from local repo
+
+//create new branch
+
+git branch team1
+
+imp    * add code to origin to your team1 branch >>
+
+/// git push origin team1 
+
+14) ssh key genrate--> ssh-keygen
+
+click y
+
+cat <pest path>
+
+to add key in git account  got to settings and add new ssh and gpg key
+coppy and pest ssh key...
+
+for authonticate ...key use 
+cmnd.
+
+->> ssh -T git@github.com
+
+now you authenticated....
+
+/// Undo
+ git reset --hard HEAD@{7}
+
+//CHECK HOW MANY BRANCH
+//git branch -a
+
+//check commit hash //
+git log --oneline
+
+//go to previous version
+:- git commit prevoise hashcode
+git reset 38487mcdd5
+
+
+Update : Perform CRUD in Spring Boot application ,Exception handling, understand git merge vs git rebase,git squashing, indexing in sql ,practice on sql quries.
+
+
+
+Q. What’s a Git Reset?
+
+ Git reset is a powerful command that 
+ undoes changes moving the repository
+ back to a previous commit and eliminating
+ any changes made after the commit.
+ It’s literally hitting the “reset” button,
+ undoing local changes.
+
+***Git Squashing?***
+
+git log --oneline
+git rebase -i HEAD~3
+press i
+chenge pick to squash
+and press 
+Esc :wq and hit Enter
+
+add this cmnd
+$ git rebase --edit-todo or git rebase --continue
+
+
+# to commit msg 
+and press
+Esc :wq and hit Enter
+
+***************
+
+To squash commits replace "pick" with "squash"
+for each commit that you want to squash.
+then save the file and close it.
+git will perform the rebase, squashing the
+commits and newly rewrite commit massage.
+
+
+
