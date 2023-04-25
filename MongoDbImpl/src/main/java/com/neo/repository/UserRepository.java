@@ -17,4 +17,8 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     @Query("{'email':?0,'username':?1}")
     List<User> findByEmailAndUsername(String email, String username);
+
+    @Query("{'age':{$gte:?0,$lt:50}}")
+    List<User> findByAgeGraterThanEqual(Integer age);
+
 }

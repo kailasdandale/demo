@@ -35,4 +35,9 @@ public class UserService {
     public List<User> findByEmailAndUsername(String email, String username) {
         return userRepository.findByEmailAndUsername(email, username);
     }
+
+    public List<User> getUserByAge(Integer age) {
+
+        return userRepository.findByAgeGraterThanEqual(age);
+    }
 }

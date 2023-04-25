@@ -47,4 +47,10 @@ public class UserController {
 
     }
 
+    @GetMapping("/age/{age}")
+    public List<User>getUserByAge(@PathVariable Integer age) {
+
+        return userService.getUserByAge(age);
+    }
+
 }
